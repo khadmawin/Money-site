@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Money-site | اكسب من الإنترنت</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1565c0, #42a5f5);
+      color: white;
+      padding: 28px 18px;
+      text-align: center;
+      border-radius: 0 0 25px 25px;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: .95;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .balance {
+      background: white;
+      padding: 22px;
+      margin-top: -10px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      text-align: center;
+    }
+
+    .balance h2 {
+      color: #1565c0;
+      font-size: 30px;
+      margin: 8px;
+    }
+
+    .section-title {
+      margin: 28px 0 14px;
+      font-size: 22px;
+    }
+
+    .task {
+      background: white;
+      margin-bottom: 14px;
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    }
+
+    .task h3 {
+      margin-bottom: 8px;
+    }
+
+    .task p {
+      color: #667085;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .points {
+      color: #1565c0;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      background: #1565c0;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0d47a1;
+    }
+
+    .withdraw {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.06);
+      margin-top: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .note {
+      background: #fff8e1;
+      padding: 13px;
+      border-radius: 10px;
+      margin-top: 15px;
+      color: #795548;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>💰 Money-site</h1>
+  <p>اكتشف طرقًا بسيطة لكسب المال عبر الإنترنت</p>
+</header>
+
+<div class="container">
+
+  <div class="balance">
+    <p>رصيدك التجريبي</p>
+    <h2><span id="points">0</span> نقطة</h2>
+    <p>كل 100 نقطة = 1 وحدة رصيد تجريبية</p>
+  </div>
+
+  <h2 class="section-title">📋 المهام المتاحة</h2>
+
+  <div class="task">
+    <h3>🔗 زيارة موقع</h3>
+    <p>اضغط على الزر لفتح الرابط. استعمل فقط المواقع التي تثق بها.</p>
+    <span class="points">+20 نقطة</span>
+    <button onclick="completeTask(20, 'https://www.google.com')">
+      تنفيذ المهمة
+    </button>
+  </div>
+
+  <div class="task">
+    <h3>📱 متابعة صفحة</h3>
+    <p>يمكنك إضافة رابط صفحتك أو صفحة شريك تجاري هنا.</p>
+    <span class="points">+30 نقطة</span>
+    <button onclick="completeTask(30, 'https://www.facebook.com')">
+      تنفيذ المهمة
+    </button>
+  </div>
+
+  <div class="task">
+    <h3>⭐ مهمة جديدة</h3>
+    <p>قسم مخصص لإضافة عروض ومهام جديدة مستقبلًا.</p>
+    <span class="points">+50 نقطة</span>
+    <button onclick="completeTask(50, '#')">
+      الحصول على النقاط
+    </button>
+  </div>
+
+  <div class="withdraw">
+    <h2>💳 طلب سحب</h2>
+
+    <p style="margin:12px 0;">
+      عند إنشاء نظام الدفع الحقيقي، يمكن ربط هذا القسم بوسيلة دفع مناسبة.
+    </p>
+
+    <input
+      type="text"
+      id="name"
+      placeholder="اسمك">
+
+    <select id="method">
+      <option value="">اختر طريقة الدفع</option>
+      <option>BaridiMob</option>
+      <option>PayPal</option>
+      <option>Wise</option>
+    </select>
+
+    <input
+      type="text"
+      id="account"
+      placeholder="رقم الحساب أو البريد">
+
+    <button onclick="withdraw()">
+      طلب السحب
+    </button>
+
+    <div class="note">
+      ⚠️ هذا الإصدار تجريبي. لا يتم إرسال أموال حقيقية من هذا الموقع حاليًا.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 202
